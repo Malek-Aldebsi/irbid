@@ -18,7 +18,7 @@ class _WelcomePageState extends State<WelcomePage> {
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/welcome.png'), fit: BoxFit.cover),
+              image: AssetImage('images/welcome.png'), fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
@@ -132,6 +132,8 @@ class _WelcomePageState extends State<WelcomePage> {
                 ),
               ),
               const Divider(
+                color: Color(0XFF005B51),
+                thickness: 1,
                 height: 1,
               ),
               Container(

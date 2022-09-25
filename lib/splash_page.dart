@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:irbid_app/otp_page.dart';
 import 'package:irbid_app/welcome_page.dart';
 
 void main() {
@@ -21,8 +22,8 @@ class SplashScreenState extends State<SplashScreen>
   startTime() async {
     var duration = const Duration(seconds: 4);
     return Timer(duration, () {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const WelcomePage()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const OTP()));
     });
   }
 
@@ -45,7 +46,7 @@ class SplashScreenState extends State<SplashScreen>
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/splash.png'), fit: BoxFit.cover)),
+                image: AssetImage('images/splash.png'), fit: BoxFit.fill)),
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[

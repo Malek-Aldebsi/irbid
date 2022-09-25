@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:irbid_app/otp_page.dart';
 import 'package:irbid_app/signup_page.dart';
 
 class Login extends StatefulWidget {
@@ -36,33 +37,37 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/signUp.png'), fit: BoxFit.cover),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 35),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Image(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 100,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/signup.png'), fit: BoxFit.fill),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: const Image(
                     image: AssetImage('images/logo.png'),
                     height: 60,
                   ),
-                  const Text(
-                    'تسجيل الدخول',
-                    style: TextStyle(
-                        fontFamily: 'Dubai',
-                        color: Color(0XFFFFFFFF),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  InkWell(
+                ),
+                const Text(
+                  'تسجيل الدخول',
+                  style: TextStyle(
+                      fontFamily: 'Dubai',
+                      color: Color(0XFFFFFFFF),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: InkWell(
                     onTap: () {
                       Navigator.pop(context);
                     },
@@ -79,50 +84,62 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 75),
-              Directionality(
-                textDirection: TextDirection.rtl,
-                child: TextField(
-                  onTap: () {
-                    setState(() {
-                      visible = !visible;
-                    });
-                  },
-                  style: const TextStyle(
-                      fontFamily: 'Dubai',
-                      color: Color(0XFF001E1A),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-
-                    label: Text(
-                      'رقم الهاتف',
-                      style: TextStyle(
-                          fontFamily: 'Dubai',
-                          color: visible
-                              ? const Color(0XFF339B7D)
-                              : const Color(0XFF9E9E9E),
-                          fontSize: 17,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    border: inputBorder(), //normal border
-                    enabledBorder: inputBorder(), //enabled border
-                    focusedBorder: focusBorder(),
-                    suffixIcon: Icon(
-                      Icons.check,
-                      color: visible
-                          ? const Color(0XFF3FAD47)
-                          : const Color(0XFFFFFFFF),
-                    ), //focused border
                   ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(height: 75),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: TextField(
+                onTap: () {
+                  setState(() {
+                    visible = !visible;
+                  });
+                },
+                style: const TextStyle(
+                    fontFamily: 'Dubai',
+                    color: Color(0XFF001E1A),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+
+                  label: Text(
+                    'رقم الهاتف',
+                    style: TextStyle(
+                        fontFamily: 'Dubai',
+                        color: visible
+                            ? const Color(0XFF339B7D)
+                            : const Color(0XFF9E9E9E),
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  border: inputBorder(), //normal border
+                  enabledBorder: inputBorder(), //enabled border
+                  focusedBorder: focusBorder(),
+                  suffixIcon: Icon(
+                    Icons.check,
+                    color: visible
+                        ? const Color(0XFF3FAD47)
+                        : const Color(0XFFFFFFFF),
+                  ), //focused border
                 ),
               ),
-              const SizedBox(height: 45),
-              Container(
+            ),
+          ),
+          const SizedBox(height: 45),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const OTP()));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Container(
                 decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
@@ -147,39 +164,42 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SignUp()));
-                    },
-                    child: const Text(
-                      'تسجيل حساب جديد',
-                      style: TextStyle(
-                          fontFamily: 'Dubai',
-                          color: Color(0XFF3FAD47),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  const Text(
-                    '  ليس لديك حساب؟',
+            ),
+          ),
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignUp()));
+                  },
+                  child: const Text(
+                    'تسجيل حساب جديد',
                     style: TextStyle(
                         fontFamily: 'Dubai',
-                        color: Color(0XFF001E1A),
+                        color: Color(0XFF3FAD47),
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
-                ],
-              )
-            ],
-          ),
-        ),
+                ),
+                const Text(
+                  '  ليس لديك حساب؟',
+                  style: TextStyle(
+                      fontFamily: 'Dubai',
+                      color: Color(0XFF001E1A),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
